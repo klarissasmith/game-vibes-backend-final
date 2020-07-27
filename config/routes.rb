@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   get '/games' => 'games#index'
   get '/games/:id' => 'games#show'
 
-
+  #Users Routes for Login/Logout
+  resource :users, only: [:create, :show]
+  post "/login", to: "users#login"
+  get "/auto_login", to: "users#auto_login"
 end
