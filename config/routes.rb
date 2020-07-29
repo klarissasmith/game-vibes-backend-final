@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   #Users Routes for Login/Logout
   resource :users, only: [:create, :show]
-  post "/login", to: "users#login"
+  post "/login", to: "auth#create"
   get "/auto_login", to: "users#auto_login"
 end
