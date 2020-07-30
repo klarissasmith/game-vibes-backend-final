@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   get '/games/:id' => 'games#show'
 
   #Users Routes for Login/Logout
-  resource :users, only: [:create, :show]
-  post "/login", to: "auth#create"
-  get "/auto_login", to: "users#auto_login"
+  namespace :api do
+    namespace :v1 do
+      resource :users, only: [:create, :show]
+      post "/login", to: "auth#create"
+      get "/auto_login", to: "users#auto_login"
+    end
+  end
 end
