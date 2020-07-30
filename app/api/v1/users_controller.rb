@@ -8,6 +8,9 @@ class API::V1::UsersController < ApplicationController
         end
     end
 
+    def show
+        user = user.find(params[:id])
+    end
     private 
         def user_params
             params.require(:user).permit(:username, :password)
