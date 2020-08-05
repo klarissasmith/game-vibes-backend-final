@@ -5,19 +5,16 @@ class UsersController < ApplicationController
     end
     
     def create
-        user = User.create(user_params)
-        if user.valid?
-            render json: {user:User.new(user)}
-        else
-            render json: { error: 'failed to create user' }
-        end
+        user = User.create(username: params[:username], password: params[:password])
+        render json: user
     end
 
     def show
         user = User.find(params[:id])
     end
-    private 
-        def user_params
-            params.require(:user).permit(:username, :password)
-        end
+    
+    # private 
+    #     def user_params
+    #         params.require(:user).permit(:username, :password)
+    #     end
 end
