@@ -1,4 +1,5 @@
 class AuthenticationController < ApplicationController
+    before_action :authenticate, only:[:create]
     def login
         user = User.find_by(username: params[:username])
 
