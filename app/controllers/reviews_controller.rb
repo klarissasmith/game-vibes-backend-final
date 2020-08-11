@@ -4,6 +4,11 @@ class ReviewsController < ApplicationController
     render json: reviews, only: [:id, :summary, :user_id, :game_id]
   end
 
+  def create
+    review = Review.create(review_params)
+    render json: review
+  end
+
   def show
     review = Review.find_by(id: params[:id])
     if review
@@ -21,6 +26,12 @@ class ReviewsController < ApplicationController
 
   def edit
     review = Review.find_by(id: params[:id])
+  end
+
+  def destroy
+    review = Review.find_by(id: params[:id])
+    review.destroy
+    render json: review
   end
 
   private
