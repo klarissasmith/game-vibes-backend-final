@@ -4,9 +4,9 @@ User.destroy_all
 Review.destroy_all
 Game.destroy_all
 
-User.create(username: "janedoe", password: "12345")
-User.create(username: "johndoe", password: "abcdef")
-User.create(username: "ksmith", password: "ksmith")
+User.create(username: "janedoe", password: "12345", image: "https://images.unsplash.com/photo-1491349174775-aaafddd81942?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")
+User.create(username: "johndoe", password: "abcdef", image: "https://images.unsplash.com/photo-1546456073-ea246a7bd25f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80")
+User.create(username: "ksmith", password: "ksmith", image: "")
 
 ##GAMES
 #1
