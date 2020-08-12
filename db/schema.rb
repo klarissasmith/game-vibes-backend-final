@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_08_11_214832) do
 
   create_table "reviews", force: :cascade do |t|
     t.string "summary"
-    t.integer "user_id", null: false
-    t.integer "game_id", null: false
+    t.integer "user_id"
+    t.integer "game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_reviews_on_game_id"

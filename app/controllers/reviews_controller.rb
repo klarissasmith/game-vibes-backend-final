@@ -10,7 +10,8 @@ class ReviewsController < ApplicationController
       review = Review.create(
         summary: params[:summary], 
         user_id: @user.id, 
-        game_id: params[:game_id])
+        game_id: @game.id
+      )
     
       render json: {review: review}
   end

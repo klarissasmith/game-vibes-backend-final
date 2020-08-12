@@ -10,6 +10,7 @@ class ApplicationController < ActionController::API
         decoded_token = JWT.decode(token, secret_key)
 
         @user = User.find(decoded_token[0]["user_id"])
+        @game = Game.find(params[:game_id])
         end
     end
 end
