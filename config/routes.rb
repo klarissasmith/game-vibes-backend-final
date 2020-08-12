@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   #   namespace :v1 do
       resources :users, only: [:create, :show, :index]
       # get "/users", to: "users#index"
-      # post "/login", to: "auth#create"
+      post "/login", to: "auth#create"
       # get "/auto_login", to: "users#auto_login"
   #   end
   # end
