@@ -1,23 +1,18 @@
 class ReviewsController < ApplicationController
+  before_action :authenticate, only: [:create]
+  
   def index
     reviews = Review.all
     render json: reviews, only: [:id, :summary, :user_id, :game_id]
   end
 
   def create
-    authorization_header = request.headers[:authorization]
-    if !authorization_header
-      render status: :unauthorized
-    else 
-      token = authorization_header.split(" ")[1]
-      secret_key = Rails.application.secrets.secret_key_base[0]
-      decoded_token = JWT.decode(token, secret_key)
-
-      user = User.find(decoded_token[0]["user_id"])
-      review = Review.create(summary: params[:summary], user_id: user.id, game_id: params[:game_id])
+      review = Review.create(
+        summary: params[:summary], 
+        user_id: @user.id, 
+        game_id: params[:game_id])
     
       render json: {review: review}
-    end
   end
 
   def show
