@@ -14,9 +14,10 @@ class ReviewsController < ApplicationController
       decoded_token = JWT.decode(token, secret_key)
 
       user = User.find(decoded_token[0]["user_id"])
+      review = Review.create(summary: params[:summary], user_id: user.id, game_id: params[:game_id])
+    
+      render json: {review: review}
     end
-    review = Review.create(review_params)
-    render json: review
   end
 
   def show
@@ -46,6 +47,9 @@ class ReviewsController < ApplicationController
 
   private
     def review_params
-      params.require(:review).permit(:summary, :user_id, :game_id)
+      params.permit( :summary, :user_id, :game_id)
     end
+    # def review_params
+    #   params.require(:review).permit( :summary, :user_id, :game_id)
+    # end
 end
