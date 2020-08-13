@@ -27,6 +27,7 @@ class AuthenticationController < ApplicationController
             render json: {error: "No user could be found"}, status: 401
         end
     end
+    ## I am new and for testing
 
 
     
