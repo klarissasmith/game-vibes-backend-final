@@ -13,4 +13,14 @@ class ApplicationController < ActionController::API
         @game = Game.find(params[:game_id])
         end
     end
+
+    def current_user
+        @user
+    end
+
+
+
+    def logged_in?
+        !!current_user
+    end
 end

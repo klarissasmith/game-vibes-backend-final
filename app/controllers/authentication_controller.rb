@@ -13,12 +13,21 @@ class AuthenticationController < ApplicationController
                 }, secret_key)
                 render json: {user_id: user.id, username: user.username, token: token }
             else 
-                render json: {status: :unauthorized}
+                render status: :unauthorized
             end
         end
     end
 
     def show
-
+        @user = User.find_by(id: user_url)
+      
+        if user && logged_in?
+            render json: {id: user.id, username: user.username}
+        else
+            render json: {error: "No user could be found"}, status: 401
+        end
     end
+
+
+    
 end
