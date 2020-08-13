@@ -1,12 +1,14 @@
 class ReviewsController < ApplicationController
+  # before_action :authenticate, only: [:create]
+  
   def index
     reviews = Review.all
     render json: reviews, only: [:id, :summary, :user_id, :game_id]
   end
 
   def create
-    review = Review.create(review_params)
-    render json: review
+      review = Review.create(review_params)
+      render json: {review: review}
   end
 
   def show
@@ -35,7 +37,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+    # def review_params
+    #   params.permit( :summary, :user, :game)
+    # end
     def review_params
-      params.require(:review).permit(:summary, :user_id, :game_id)
+      params.require(:review).permit( :summary, :user_id, :game_id)
     end
 end
