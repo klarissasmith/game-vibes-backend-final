@@ -27,4 +27,4 @@ class AuthenticationController < ApplicationController
     #         render json: {error: "No user could be found"}, status: 401
     #     end
     # end
- 
+end
