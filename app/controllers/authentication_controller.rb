@@ -18,16 +18,16 @@ class AuthenticationController < ApplicationController
         end
     end
 
-    def show
-        @user = User.find_by(id: user_url)
+    # def show
+    #     @user = User.find_by(id: user_url)
       
-        if user && logged_in?
-            render json: {id: user.id, username: user.username}
-        else
-            render json: {error: "No user could be found"}, status: 401
-        end
-    end
-    ## I am new and for testing
+    #     if user && logged_in?
+    #         render json: {id: user.id, username: user.username}
+    #     else
+    #         render json: {error: "No user could be found"}, status: 401
+    #     end
+    # end
+  
 
 
     
