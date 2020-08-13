@@ -11,10 +11,14 @@ class AuthenticationController < ApplicationController
                     user_id: user.id,
                     username: user.username
                 }, secret_key)
-                render json: {token: token }
+                render json: {user_id: user.id, username: user.username, token: token }
             else 
-                render json: {message: "Not right"}
+                render json: {status: :unauthorized}
             end
         end
+    end
+
+    def show
+
     end
 end
