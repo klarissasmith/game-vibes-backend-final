@@ -7,12 +7,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-      review = Review.create(
-        summary: params[:summary], 
-        user_id: @user.id, 
-        game_id: @game.id
-      )
-    
+      review = Review.create(review_params)
       render json: {review: review}
   end
 
@@ -42,10 +37,10 @@ class ReviewsController < ApplicationController
   end
 
   private
-    def review_params
-      params.permit( :summary, :user_id, :game_id)
-    end
     # def review_params
-    #   params.require(:review).permit( :summary, :user_id, :game_id)
+    #   params.permit( :summary, :user, :game)
     # end
+    def review_params
+      params.require(:review).permit( :summary, :user_id, :game_id)
+    end
 end

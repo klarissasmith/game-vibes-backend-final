@@ -14,13 +14,13 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def current_user
-        @user
-    end
+    # def current_user
+    #     @user
+    # end
 
 
 
-    def logged_in?
-        !!current_user
-    end
+    # def logged_in?
+    #     !!current_user
+    # end
 end
